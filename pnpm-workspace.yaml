@@ -1,3 +1,4 @@
-# onlyBuiltDependencies:
-#   - esbuild
-#   - sharp
+onlyBuiltDependencies:
+  - bufferutil
+  - esbuild
+  - sharp

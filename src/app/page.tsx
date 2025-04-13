@@ -5,7 +5,7 @@ import { db } from "~/server/db";
 
 // This disables all caching of fetches and always revalidates
 export const dynamic = "force-dynamic";
-// Dont forget to change Typescript version for this project only (not TS version from VSCODE!)
+// change Typescript version for this project only (installed within node_modules) not from TS version from vscode!
 
 const mockUrls = [
   "https://vpj0o8x22x.ufs.sh/f/r2ogEo82HpIZFkvfd74DxIQyaG9AMln8XoZbY2L7NB4mgicP",
