@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import Link from "next/link";
 import { db } from "~/server/db";
+
+// This disables all caching of fetches and always revalidates
+export const dynamic = "force-dynamic";
+// Dont forget to change Typescript version for this project only (not TS version from VSCODE!)
 
 const mockUrls = [
   "https://vpj0o8x22x.ufs.sh/f/r2ogEo82HpIZFkvfd74DxIQyaG9AMln8XoZbY2L7NB4mgicP",
