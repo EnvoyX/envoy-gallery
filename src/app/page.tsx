@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import Link from "next/link";
+import { db } from "~/server/db";
 
 const mockUrls = [
   "https://vpj0o8x22x.ufs.sh/f/r2ogEo82HpIZFkvfd74DxIQyaG9AMln8XoZbY2L7NB4mgicP",
@@ -12,12 +16,17 @@ const mockImages = mockUrls.map((url, idx) => ({
   url,
 }));
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await db.query.posts.findMany();
+  console.log(posts);
   return (
     <main className="">
       <div className="flex flex-wrap gap-4">
+        {posts.map((post) => (
+          <div key={post.id}>{post.name}</div>
+        ))}
         {[...mockImages, ...mockImages, ...mockImages].map((image, idx) => (
-          <div key={idx} className="w-48">
+          <div key={image.id + "-" + idx} className="w-48">
             <img src={image.url} alt="image mockup" />
           </div>
         ))}
