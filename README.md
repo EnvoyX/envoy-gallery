@@ -5,8 +5,8 @@
 - [✅] Make it deploy (vercel)
 - [✅] Basic UI with mock data
 - [✅] Tidy up build process
-- [ ] Setup Database (vercel postgres)
-- [ ] Connect database to UI
+- [✅] Setup Database (vercel postgres)
+- [✅] Connect database to UI
 - [ ] Add authentication (w/ Clerk)
 - [ ] Add image upload
 - [ ] Error management (w/ Sentry)
