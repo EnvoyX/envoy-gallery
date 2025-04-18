@@ -1,9 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { db } from "~/server/db";
+import { getMyImages } from "~/server/queries";
 
 // This disables all caching of fetches and always revalidates
 // change Typescript version for this project only (installed within node_modules) not from TS version from vscode!
@@ -22,9 +18,7 @@ export const dynamic = "force-dynamic";
 // }));
 
 const Images = async () => {
-  const images = await db.query.images.findMany({
-    orderBy: (model, { desc }) => desc(model.id),
-  });
+  const images = await getMyImages();
   return (
     <div className="flex flex-wrap gap-4">
       {images.map((image) => (
