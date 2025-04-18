@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { db } from "~/server/db";
 
 // This disables all caching of fetches and always revalidates
@@ -20,26 +21,38 @@ export const dynamic = "force-dynamic";
 //   url,
 // }));
 
-export default async function HomePage() {
+const Images = async () => {
   const images = await db.query.images.findMany({
     orderBy: (model, { desc }) => desc(model.id),
   });
-  console.log(images);
+  return (
+    <div className="flex flex-wrap gap-4">
+      {[...images, ...images, ...images].map((image, idx) => (
+        <div key={image.id + "-" + idx} className="flex w-48 flex-col">
+          <img src={image.url} alt={`${image.id}`} />
+          <div>{image.name}</div>
+        </div>
+      ))}
+      {/* {[...mockImages, ...mockImages, ...mockImages].map((image, idx) => (
+      <div key={image.id + "-" + idx} className="w-48">
+        <img src={image.url} alt="image mockup" />
+      </div>
+    ))} */}
+    </div>
+  );
+};
+
+export default async function HomePage() {
   return (
     <main className="">
-      <div className="flex flex-wrap gap-4">
-        {[...images, ...images, ...images].map((image, idx) => (
-          <div key={image.id + "-" + idx} className="flex w-48 flex-col">
-            <img src={image.url} alt={`${image.id}`} />
-            <div>{image.name}</div>
-          </div>
-        ))}
-        {/* {[...mockImages, ...mockImages, ...mockImages].map((image, idx) => (
-          <div key={image.id + "-" + idx} className="w-48">
-            <img src={image.url} alt="image mockup" />
-          </div>
-        ))} */}
-      </div>
+      <SignedOut>
+        <div className="h-full w-full text-center text-2xl">
+          Please sign in on above
+        </div>
+      </SignedOut>
+      <SignedIn>
+        <Images></Images>
+      </SignedIn>
     </main>
   );
 }
