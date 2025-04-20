@@ -7,6 +7,7 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import { Toaster } from "~/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Envoy Gallery",
@@ -37,6 +38,7 @@ export default function RootLayout({
           </div>
           {modal}
           <div id="modal-root"></div>
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
