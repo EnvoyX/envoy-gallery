@@ -28,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en" className={`${geist.variable}`}>
+      <html lang="en" className={`${geist.variable} dark`}>
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <body className="">
           <div className="grid h-screen grid-rows-[auto_1fr]">
