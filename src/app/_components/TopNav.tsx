@@ -8,10 +8,9 @@ export function TopNav() {
   const router = useRouter();
   return (
     <nav className="flex w-full items-center justify-between border-b p-4 text-xl font-semibold">
-      <div>
+      <div className="">
         <Link href={`/`}>Envoy Gallery</Link>
       </div>
-
       <div className="flex flex-row">
         <SignedOut>
           <div className="rounded-lg border border-white px-2 py-1">
