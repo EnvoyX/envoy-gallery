@@ -17,4 +17,4 @@
 - [✅] Setup ShadUI (Toast)
 - [✅] Analytics (posthog)
 - [✅] Delete button (w/ Server Action)
-- [ ] Rate Limiting (Upstash)
+- [✅] Rate Limiting (Upstash)

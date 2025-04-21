@@ -101,9 +101,15 @@ export default function SimpleUploadButton() {
         },
       );
     },
+    onUploadError(error) {
+      posthog.capture("upload_error", { error });
+      toast.dismiss("upload-begin");
+      toast.error("Upload failed!");
+    },
     onClientUploadComplete() {
       router.refresh();
       toast.dismiss("upload-begin");
+      posthog.capture("upload_complete");
       toast.success("Upload complete!");
     },
   });

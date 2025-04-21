@@ -30,7 +30,11 @@ export default async function FullPageImageView(props: { id: number }) {
               await deleteImage(props.id);
             }}
           >
-            <Button type="submit" variant={"destructive"}>
+            <Button
+              type="submit"
+              variant={"destructive"}
+              className="cursor-pointer"
+            >
               Delete
             </Button>
           </form>
